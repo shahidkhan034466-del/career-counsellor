@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahid Career Counselling - Guiding You Towards the Right Career Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --charcoal: #2d2d2d;
+            --light-charcoal: #3a3a3a;
+            --gold: #d4af37;
+            --gold-light: #f0d060;
+            --soft-white: #f5f5f5;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            background: linear-gradient(135deg, var(--soft-white), var(--gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--soft-white);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--gold);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--soft-white);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-black) 0%, var(--charcoal) 100%);
+            z-index: -1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/seed/career/1920/1080.jpg') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary-black);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--soft-white);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--gold), transparent);
+            border-radius: 50%;
+            filter: blur(30px);
+            z-index: -1;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* Career Assessment Section */
+        .assessment {
+            background: linear-gradient(135deg, var(--secondary-black) 0%, var(--charcoal) 100%);
+        }
+
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-progress {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        .question-number {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            color: var(--soft-white);
+            margin-bottom: 2rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+        }
+
+        .option-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .option.selected .option-icon {
+            background: var(--gold);
+            color: var(--primary-black);
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .quiz-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .quiz-btn-prev {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--text-secondary);
+        }
+
+        .quiz-btn-prev:hover {
+            color: var(--soft-white);
+            border-color: var(--soft-white);
+        }
+
+        .quiz-btn-next {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary-black);
+        }
+
+        .quiz-btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .quiz-btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .results-subtitle {
+            color: var(--text-secondary);
+        }
+
+        .career-suggestions {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .career-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .career-title {
+            color: var(--soft-white);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .career-title i {
+            color: var(--gold);
+        }
+
+        .match-percentage {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--primary-black);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .career-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .career-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .results-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--primary-black);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, var(--secondary-black) 0%, var(--charcoal) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--secondary-black), var(--charcoal));
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background-color: var(--primary-black);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--secondary-black) 0%, var(--charcoal) 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-detail i {
+            color: var(--gold);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-black);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--soft-white);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content, .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image-container {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--secondary-black);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .services-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-container {
+                padding: 2rem;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--secondary-black), var(--charcoal));
+            color: var(--soft-white);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--gold);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .toast-icon {
+            color: var(--gold);
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-compass"></i>
+                Shahid Career Counselling
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#assessment" class="nav-link">Career Test</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#why-choose" class="nav-link">Why Choose Us</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Discover Your Perfect Career Path</h1>
+                <p>Take our free career assessment test and unlock personalized career recommendations tailored to your unique strengths and interests.</p>
+                <div class="btn-container">
+                    <a href="#assessment" class="btn btn-primary">Take Career Test</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/008/390/248/small/career-counseling-word-on-sticker-on-notepad-with-pen-and-calculator-free-photo.jpg" alt="Career Assessment">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Assessment Section -->
+    <section class="assessment" id="assessment">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Career Assessment Test</h2>
+            </div>
+            <div class="assessment-container fade-in">
+                <div class="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Question 1 of 5</div>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="question-container active" data-question="1">
+                        <div class="question-number">Question 1 of 5</div>
+                        <div class="question-text">What type of work environment do you prefer?</div>
+                        <div class="options">
+                            <div class="option" data-value="creative">
+                                <div class="option-icon">A</div>
+                                <div>Creative and dynamic - I thrive in innovative spaces</div>
+                            </div>
+                            <div class="option" data-value="structured">
+                                <div class="option-icon">B</div>
+                                <div>Structured and organized - I prefer clear processes</div>
+                            </div>
+                            <div class="option" data-value="social">
+                                <div class="option-icon">C</div>
+                                <div>Social and collaborative - I enjoy working with people</div>
+                            </div>
+                            <div class="option" data-value="independent">
+                                <div class="option-icon">D</div>
+                                <div>Independent and quiet - I work best alone</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-container" data-question="2">
+                        <div class="question-number">Question 2 of 5</div>
+                        <div class="question-text">Which activities energize you the most?</div>
+                        <div class="options">
+                            <div class="option" data-value="analytical">
+                                <div class="option-icon">A</div>
+                                <div>Solving complex problems and analyzing data</div>
+                            </div>
+                            <div class="option" data-value="helping">
+                                <div class="option-icon">B</div>
+                                <div>Helping others and making a positive impact</div>
+                            </div>
+                            <div class="option" data-value="creating">
+                                <div class="option-icon">C</div>
+                                <div>Creating new things and expressing ideas</div>
+                            </div>
+                            <div class="option" data-value="leading">
+                                <div class="option-icon">D</div>
+                                <div>Leading teams and making strategic decisions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-container" data-question="3">
+                        <div class="question-number">Question 3 of 5</div>
+                        <div class="question-text">What's your ideal work-life balance?</div>
+                        <div class="options">
+                            <div class="option" data-value="flexible">
+                                <div class="option-icon">A</div>
+                                <div>Flexible hours with remote work options</div>
+                            </div>
+                            <div class="option" data-value="traditional">
+                                <div class="option-icon">B</div>
+                                <div>Traditional 9-5 with clear boundaries</div>
+                            </div>
+                            <div class="option" data-value="project">
+                                <div class="option-icon">C</div>
+                                <div>Project-based with intense periods and breaks</div>
+                            </div>
+                            <div class="option" data-value="entrepreneur">
+                                <div class="option-icon">D</div>
+                                <div>I'm willing to work long hours for my passion</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-container" data-question="4">
+                        <div class="question-number">Question 4 of 5</div>
+                        <div class="question-text">Which skills do you enjoy using most?</div>
+                        <div class="options">
+                            <div class="option" data-value="technical">
+                                <div class="option-icon">A</div>
+                                <div>Technical skills and technology</div>
+                            </div>
+                            <div class="option" data-value="communication">
+                                <div class="option-icon">B</div>
+                                <div>Communication and interpersonal skills</div>
+                            </div>
+                            <div class="option" data-value="artistic">
+                                <div class="option-icon">C</div>
+                                <div>Artistic and design skills</div>
+                            </div>
+                            <div class="option" data-value="business">
+                                <div class="option-icon">D</div>
+                                <div>Business and strategic thinking</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-container" data-question="5">
+                        <div class="question-number">Question 5 of 5</div>
+                        <div class="question-text">What motivates you in a career?</div>
+                        <div class="options">
+                            <div class="option" data-value="innovation">
+                                <div class="option-icon">A</div>
+                                <div>Innovation and continuous learning</div>
+                            </div>
+                            <div class="option" data-value="stability">
+                                <div class="option-icon">B</div>
+                                <div>Job security and stability</div>
+                            </div>
+                            <div class="option" data-value="impact">
+                                <div class="option-icon">C</div>
+                                <div>Making a difference in society</div>
+                            </div>
+                            <div class="option" data-value="achievement">
+                                <div class="option-icon">D</div>
+                                <div>Recognition and financial success</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="results-container" id="resultsContainer">
+                        <div class="results-header">
+                            <h3 class="results-title">Your Career Recommendations</h3>
+                            <p class="results-subtitle">Based on your answers, here are the top career paths for you:</p>
+                        </div>
+                        <div class="career-suggestions" id="careerSuggestions">
+                            <!-- Results will be dynamically inserted here -->
+                        </div>
+                        <div class="results-cta">
+                            <a href="#contact" class="btn btn-primary">Book a Career Session</a>
+                        </div>
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button class="quiz-btn quiz-btn-prev" id="prevBtn" style="display: none;">Previous</button>
+                        <button class="quiz-btn quiz-btn-next" id="nextBtn">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>At Shahid Career Counselling, our mission is to empower students and professionals to make informed career decisions that lead to fulfillment and success.</p>
+                    <p>We believe that everyone deserves a career that aligns with their unique strengths, interests, and values. Our team of experienced counselors is dedicated to providing personalized guidance that transforms uncertainty into clarity.</p>
+                    <p>With years of experience in education and career development, we've helped thousands of individuals discover their true potential and navigate the complex landscape of career options.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-container">
+                        <img src="https://picsum.photos/seed/career-counselor/600/500.jpg" alt="Career Counseling Session">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid fade-in">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Career Counseling</h3>
+                    <p>Comprehensive career assessments and one-on-one counseling sessions to help you identify your strengths and find the right career path.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Academic Guidance</h3>
+                    <p>Expert advice on course selection, college applications, and educational pathways that align with your career goals.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Skill & Career Roadmap Planning</h3>
+                    <p>Customized roadmaps that outline the skills, experiences, and milestones needed to achieve your career aspirations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Student Mentorship</h3>
+                    <p>Ongoing support and mentorship to help you navigate challenges, build confidence, and stay focused on your goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="features-grid fade-in">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Professional Guidance</h3>
+                    <p>Our team consists of certified career counselors with extensive experience in education and industry.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Student-Focused Approach</h3>
+                    <p>We prioritize your unique needs, interests, and goals to provide personalized recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Clear Roadmaps</h3>
+                    <p>Receive practical, step-by-step career roadmaps that guide you from where you are to where you want to be.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Proven Results</h3>
+                    <p>Join thousands of satisfied clients who have found fulfilling careers through our guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container fade-in">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Ready to take the next step in your career journey? Contact us today to schedule a consultation.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Career Path, Guidance City, GC 12345</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@shahidcareercounselling.com</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-compass"></i>
+                Shahid Career Counselling
+            </div>
+            <p class="copyright">© 2023 Shahid Career Counselling. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-message">
+                Your message has been sent successfully!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Career Assessment Quiz
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        const answers = {};
+
+        const questionContainers = document.querySelectorAll('.question-container');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const resultsContainer = document.getElementById('resultsContainer');
+
+        // Career database
+        const careers = {
+            'creative': {
+                title: 'Creative Director',
+                icon: 'fa-palette',
+                description: 'Lead creative teams and develop innovative visual concepts for brands and products.',
+                skills: ['Design Thinking', 'Leadership', 'Visual Communication', 'Innovation']
+            },
+            'structured': {
+                title: 'Project Manager',
+                icon: 'fa-tasks',
+                description: 'Organize and manage projects from conception to completion, ensuring timely delivery.',
+                skills: ['Planning', 'Organization', 'Risk Management', 'Team Coordination']
+            },
+            'social': {
+                title: 'Human Resources Manager',
+                icon: 'fa-users',
+                description: 'Manage employee relations, recruitment, and organizational development.',
+                skills: ['Communication', 'Empathy', 'Conflict Resolution', 'Strategic Planning']
+            },
+            'independent': {
+                title: 'Data Scientist',
+                icon: 'fa-chart-bar',
+                description: 'Analyze complex data to help organizations make informed decisions.',
+                skills: ['Statistics', 'Programming', 'Machine Learning', 'Problem Solving']
+            },
+            'analytical': {
+                title: 'Business Analyst',
+                icon: 'fa-briefcase',
+                description: 'Analyze business processes and recommend solutions to improve efficiency.',
+                skills: ['Critical Thinking', 'Data Analysis', 'Communication', 'Problem Solving']
+            },
+            'helping': {
+                title: 'Healthcare Professional',
+                icon: 'fa-heartbeat',
+                description: 'Provide medical care and support to improve patient health and well-being.',
+                skills: ['Medical Knowledge', 'Empathy', 'Communication', 'Critical Thinking']
+            },
+            'creating': {
+                title: 'UX/UI Designer',
+                icon: 'fa-pencil-ruler',
+                description: 'Design user-friendly interfaces and create engaging digital experiences.',
+                skills: ['Design Principles', 'User Research', 'Prototyping', 'Creativity']
+            },
+            'leading': {
+                title: 'Management Consultant',
+                icon: 'fa-handshake',
+                description: 'Advise companies on improving performance and growing their business.',
+                skills: ['Strategic Thinking', 'Leadership', 'Communication', 'Problem Solving']
+            },
+            'flexible': {
+                title: 'Digital Nomad Freelancer',
+                icon: 'fa-laptop',
+                description: 'Work remotely on various projects for different clients worldwide.',
+                skills: ['Self-Discipline', 'Time Management', 'Adaptability', 'Client Relations']
+            },
+            'traditional': {
+                title: 'Financial Analyst',
+                icon: 'fa-coins',
+                description: 'Analyze financial data and provide investment recommendations.',
+                skills: ['Financial Modeling', 'Risk Assessment', 'Attention to Detail', 'Analytics']
+            },
+            'project': {
+                title: 'Software Developer',
+                icon: 'fa-code',
+                description: 'Create innovative software solutions and applications.',
+                skills: ['Programming', 'Problem Solving', 'Debugging', 'Continuous Learning']
+            },
+            'entrepreneur': {
+                title: 'Startup Founder',
+                icon: 'fa-rocket',
+                description: 'Build and scale innovative business ideas from the ground up.',
+                skills: ['Leadership', 'Innovation', 'Risk Management', 'Networking']
+            },
+            'technical': {
+                title: 'IT Systems Engineer',
+                icon: 'fa-server',
+                description: 'Design and maintain robust IT infrastructure for organizations.',
+                skills: ['Technical Expertise', 'System Design', 'Troubleshooting', 'Security']
+            },
+            'communication': {
+                title: 'Marketing Manager',
+                icon: 'fa-bullhorn',
+                description: 'Develop and execute marketing strategies to promote products and services.',
+                skills: ['Marketing Strategy', 'Communication', 'Analytics', 'Creativity']
+            },
+            'artistic': {
+                title: 'Graphic Designer',
+                icon: 'fa-paint-brush',
+                description: 'Create visual concepts to communicate ideas through designs.',
+                skills: ['Design Software', 'Creativity', 'Typography', 'Color Theory']
+            },
+            'business': {
+                title: 'Business Development Manager',
+                icon: 'fa-chart-line',
+                description: 'Identify and pursue new business opportunities for growth.',
+                skills: ['Sales', 'Negotiation', 'Strategy', 'Relationship Building']
+            },
+            'innovation': {
+                title: 'Product Manager',
+                icon: 'fa-box',
+                description: 'Oversee product development from ideation to market launch.',
+                skills: ['Product Strategy', 'User Research', 'Agile Methods', 'Leadership']
+            },
+            'stability': {
+                title: 'Government Administrator',
+                icon: 'fa-landmark',
+                description: 'Manage public services and implement government policies.',
+                skills: ['Policy Analysis', 'Administration', 'Public Relations', 'Ethics']
+            },
+            'impact': {
+                title: 'Nonprofit Director',
+                icon: 'fa-hands-helping',
+                description: 'Lead organizations dedicated to social causes and community impact.',
+                skills: ['Fundraising', 'Program Management', 'Advocacy', 'Leadership']
+            },
+            'achievement': {
+                title: 'Investment Banker',
+                icon: 'fa-chart-pie',
+                description: 'Manage financial transactions and advise on corporate finance.',
+                skills: ['Financial Analysis', 'Negotiation', 'Strategic Thinking', 'Networking']
+            }
+        };
+
+        // Handle option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionContainer = this.closest('.question-container');
+                const questionNum = questionContainer.dataset.question;
+                
+                // Remove selected class from all options in this question
+                questionContainer.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store answer
+                answers[questionNum] = this.dataset.value;
+                
+                // Enable next button
+                nextBtn.disabled = false;
+            });
+        });
+
+        // Navigation buttons
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < totalQuestions) {
+                // Hide current question
+                document.querySelector(`.question-container[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Show next question
+                currentQuestion++;
+                document.querySelector(`.question-container[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Update progress
+                updateProgress();
+                
+                // Update navigation buttons
+                prevBtn.style.display = 'block';
+                if (currentQuestion === totalQuestions) {
+                    nextBtn.textContent = 'Get Results';
+                }
+                
+                // Check if option is selected for the new question
+                const currentOptions = document.querySelectorAll(`.question-container[data-question="${currentQuestion}"] .option`);
+                let hasSelection = false;
+                currentOptions.forEach(opt => {
+                    if (opt.classList.contains('selected')) {
+                        hasSelection = true;
+                    }
+                });
+                nextBtn.disabled = !hasSelection;
+            } else {
+                // Show results
+                showResults();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 1) {
+                // Hide current question
+                document.querySelector(`.question-container[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Show previous question
+                currentQuestion--;
+                document.querySelector(`.question-container[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Update progress
+                updateProgress();
+                
+                // Update navigation buttons
+                if (currentQuestion === 1) {
+                    prevBtn.style.display = 'none';
+                }
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = false;
+            }
+        });
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function showResults() {
+            // Hide all questions
+            document.querySelectorAll('.question-container').forEach(container => {
+                container.style.display = 'none';
+            });
+            
+            // Hide navigation
+            document.querySelector('.quiz-navigation').style.display = 'none';
+            
+            // Calculate results based on answers
+            const answerValues = Object.values(answers);
+            const careerMatches = {};
+            
+            // Count occurrences of each career type
+            answerValues.forEach(value => {
+                if (careers[value]) {
+                    careerMatches[value] = (careerMatches[value] || 0) + 1;
+                }
+            });
+            
+            // Sort careers by match count
+            const sortedCareers = Object.entries(careerMatches)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+            
+            // Generate HTML for results
+            let resultsHTML = '';
+            sortedCareers.forEach(([careerType, count], index) => {
+                const career = careers[careerType];
+                const percentage = Math.round((count / totalQuestions) * 100);
+                resultsHTML += `
+                    <div class="career-card">
+                        <div class="career-title">
+                            <i class="fas ${career.icon}"></i>
+                            ${career.title}
+                            <span class="match-percentage">${percentage}% Match</span>
+                        </div>
+                        <div class="career-description">${career.description}</div>
+                        <div class="career-skills">
+                            ${career.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // If no matches, show default recommendations
+            if (sortedCareers.length === 0) {
+                resultsHTML = `
+                    <div class="career-card">
+                        <div class="career-title">
+                            <i class="fas fa-user-graduate"></i>
+                            Career Counselor Recommended
+                            <span class="match-percentage">100% Match</span>
+                        </div>
+                        <div class="career-description">Based on your responses, we recommend scheduling a personalized career counseling session to explore the best career paths for you.</div>
+                        <div class="career-skills">
+                            <span class="skill-tag">Personalized Guidance</span>
+                            <span class="skill-tag">Expert Assessment</span>
+                            <span class="skill-tag">Career Planning</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('careerSuggestions').innerHTML = resultsHTML;
+            
+            // Show results container
+            resultsContainer.classList.add('active');
+            
+            // Update progress to 100%
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Assessment Complete';
+        }
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show toast notification
+            toast.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide toast after 5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
